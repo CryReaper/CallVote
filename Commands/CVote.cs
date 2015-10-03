@@ -32,7 +32,7 @@ namespace CallVoteCommands
 			}
 			else if (command[0].ToString().ToLower() == "day" && cPlayer.HasPermission("callvote.day") && CallVote.Plugin.Instance.voteInProgress == false && CallVote.Plugin.Instance.dayVoteInCooldown == false)
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer.CharacterName + " has called a vote to make it daytime. You have "
+				UnturnedChat.Say(cPlayer.CharacterName + " has called a vote to make it daytime. You have "
 					+ CallVote.Plugin.Instance.Configuration.Instance.dayVoteTimer + " seconds to type </cvote yes> to vote.", Color.yellow);
 				CallVote.Plugin.Instance.voteInProgress = true;
 
@@ -44,39 +44,39 @@ namespace CallVoteCommands
 				{
 					CallVote.Plugin.Instance.totalFor = CallVote.Plugin.Instance.totalFor + 1;
 					float percentFor = (CallVote.Plugin.Instance.totalFor/CallVote.Plugin.Instance.onlinePlayers)*100;
-					Rocket.Unturned.Chat.UnturnedChat.Say (percentFor + "% Yes, Required: " + CallVote.Plugin.Instance.Configuration.Instance.successfulDayVotePercent
+					UnturnedChat.Say(percentFor + "% Yes, Required: " + CallVote.Plugin.Instance.Configuration.Instance.successfulDayVotePercent
 						+ "%.", Color.yellow);
 					CallVote.Plugin.Instance.voteTracker.Add(cPlayer.CSteamID, cPlayer.CharacterName);
 				}
 				else if (CallVote.Plugin.Instance.voteTracker.ContainsKey(cPlayer.CSteamID))
 				{
-					Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "You have already voted!", Color.yellow);
+					UnturnedChat.Say(cPlayer, "You have already voted!", Color.yellow);
 				}
 			}
 			else if (command[0].ToString().ToLower() == "day" && !cPlayer.HasPermission("callvote.day"))
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "You do not have permission to start a day vote!", Color.red);
+				UnturnedChat.Say(cPlayer, "You do not have permission to start a day vote!", Color.red);
 			}
 			else if (command[0].ToString().ToLower() == "day" && CallVote.Plugin.Instance.voteInProgress == true)
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "Only one vote may be called at a time.", Color.yellow);
+				UnturnedChat.Say(cPlayer, "Only one vote may be called at a time.", Color.yellow);
 			}
 			else if (command[0].ToString().ToLower() == "day" && CallVote.Plugin.Instance.dayVoteInCooldown == true)
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "A day vote may only be called every " + CallVote.Plugin.Instance.Configuration.Instance.dayVoteCooldown
+				UnturnedChat.Say(cPlayer, "A day vote may only be called every " + CallVote.Plugin.Instance.Configuration.Instance.dayVoteCooldown
 					+ " seconds.", Color.yellow);
 			}
 			else if (command[0].ToString().ToLower() == "yes" && !cPlayer.HasPermission("callvote.vote"))
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "You do not have permission to vote!", Color.red);
+				UnturnedChat.Say(cPlayer, "You do not have permission to vote!", Color.red);
 			}
 			else if (command[0].ToString().ToLower() == "yes" && CallVote.Plugin.Instance.voteInProgress == false)
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "There are no votes currently active.", Color.red);
+				UnturnedChat.Say(cPlayer, "There are no votes currently active.", Color.red);
 			}
 			else
 			{
-				Rocket.Unturned.Chat.UnturnedChat.Say (cPlayer, "Invalid command parameter.", Color.yellow);
+				UnturnedChat.Say(cPlayer, "Invalid command parameter.", Color.yellow);
 			}
 		}
 		public bool AllowFromConsole
