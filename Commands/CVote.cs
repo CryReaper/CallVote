@@ -109,6 +109,10 @@ namespace CallVoteCommands
 		{
 			get { return "Enter vote node to start a vote. Enter yes or no to vote."; }
 		}
+        public AllowedCaller AllowedCaller
+        {
+            get { return AllowedCaller.Both; }
+        }
 		public List<string> Permissions
 		{
 			get
