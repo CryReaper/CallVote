@@ -15,6 +15,7 @@ using Rocket.Unturned.Commands;
 using Rocket.Unturned.Player;
 using SDG.Unturned;
 using UnityEngine;
+using Rocket.Core.Steam;
 
 namespace CallVote
 {
@@ -34,7 +35,7 @@ namespace CallVote
 					if(percentFor >= CallVote.Plugin.Instance.Configuration.Instance.successfulDayVotePercent)
 					{
 						Rocket.Unturned.Chat.UnturnedChat.Say ("The vote to make it daytime was successful.", Color.green);
-						Steam.ConsoleInput.onInputText("day");
+                        CommandWindow.ConsoleInput.onInputText("day");
 					}
 					else if (percentFor < CallVote.Plugin.Instance.Configuration.Instance.successfulDayVotePercent)
 					{
